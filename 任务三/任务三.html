@@ -1,0 +1,105 @@
+<html>
+	<head>
+		<title>页面换肤</title>
+		<meta charset="utf-8" />
+		<link  />
+		<style>
+			legend{
+				color: red;
+				font-weight: bold;
+				font-size: 40px;
+			}
+			button{
+				height: 30px;
+				width:30px;
+				transition: transform 0.1s;
+			}
+			button:hover{
+				cursor: pointer;
+				transform: translate(0,-10px);
+			}
+			#add{
+				height: auto;
+				width: 600px;
+				background-color: darkgray;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				
+				var bg=document.getElementById('add');
+				var gray=document.getElementById('1');
+				var plum=document.getElementById('2');
+				var red=document.getElementById('3');
+				var blue=document.getElementById('4');
+				var orange=document.getElementById('5');
+				var greenyellow=document.getElementById('6');
+				gray.onclick=function(){
+					add.style.backgroundColor='darkgray';
+					localStorage.setItem('bgcolor','darkgray');
+				}
+				plum.onclick=function(){
+					add.style.backgroundColor='plum';
+					localStorage.setItem('bgcolor','plum');
+				}
+				red.onclick=function(){
+					add.style.backgroundColor='red';
+					localStorage.setItem('bgcolor','red');
+				}
+				blue.onclick=function(){
+					add.style.backgroundColor='blue';
+					localStorage.setItem('bgcolor','blue');
+				}
+				orange.onclick=function(){
+					add.style.backgroundColor='orange';
+					localStorage.setItem('bgcolor','orange');
+				}
+				greenyellow.onclick=function(){
+					add.style.backgroundColor='greenyellow';
+					localStorage.setItem('bgcolor','greenyellow');
+				}
+				document.getElementById("add").style.backgroundColor=localStorage.getItem('bgcolor');
+				
+				
+				
+			}
+		</script>
+		
+		
+	</head>
+	<body>
+		<fieldset>
+			<legend>页面换肤</legend>
+			<button id="1" style="background:darkgray;" ></button>&nbsp;&nbsp;
+			<button id="2" style="background:plum;"></button>&nbsp;&nbsp;
+			<button id="3" style="background:red;" ></button>&nbsp;&nbsp;
+			<button id="4" style="background:blue;" ></button>&nbsp;&nbsp;
+			<button id="5" style="background:orange;"></button>&nbsp;&nbsp;
+			<button id="6" style="background:greenyellow;"></button><br /><br />
+			<div id="add">
+				LocalStorage将数据保存在客户端本地的硬件设备中，即使浏览器被关闭了，该数据仍然存在，下次打开浏览器访问网站时仍然可以继续使用。
+			</div>
+		</fieldset>
+	</body>
+	<script>
+		window.onload = function(){
+			if(!window.localStorage){
+				alert("你的浏览器不支持LocalStorage，请你更新浏览器");	
+		}}
+		var colorarr=new Array("red","palevioletred","palegoldenrod","maroon","darkblue","darkcyan");
+	    var add=document.getElementById('add');
+	    var bus=document.querySelectorAll('button');
+	    
+	   for(var i=0;i<bus.length;i++){
+            bus[i].index=i;
+            bus[i].onclick=function(){
+            add.style.background=colorarr[this.index];
+            localStorage.setItem('bgc',colorarr[this.index]);
+       }
+  
+       window.onload=function(){
+        add.style.background=localStorage.getItem('bgc');
+       }
+      
+	</script>
+</html>
