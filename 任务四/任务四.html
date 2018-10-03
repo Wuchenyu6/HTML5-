@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>拖放本地数据</title>
+        <style>
+            #imgContainer{
+			border:2px solid gray;
+			width:180px;
+			height:180px;
+            }
+        </style>
+    </head>
+
+    <body>
+		选择文件：
+		<input type="file" />
+        <div id="imgContainer"></div>
+        <script>
+            var imgContainer;
+            window.onload = function(){
+                imgContainer = document.getElementById("imgContainer");
+                imgContainer.ondragover = function(e){
+                    e.preventDefault();
+                }
+                imgContainer.ondrop = function(e){
+                    e.preventDefault();
+                    var fileObj = e.dataTransfer.files[0];
+                    var fileReader = new FileReader();
+                    fileReader.onload = function(e){
+                        imgContainer.innerHTML = "<img src='"+e.target.result+"' width='180px' height='180px' />"
+                    }
+                    fileReader.readAsDataURL(fileObj);
+                }
+            }
+        </script>
+    </body>
+
+</html>
